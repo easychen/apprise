@@ -201,6 +201,13 @@ class AppriseURLTester:
             # this url
             assert isinstance(obj.url(), str) is True
 
+            # Test that we support a url identifier
+            url_id = obj.url_id()
+
+            # It can be either disabled or a string; nothing else
+            assert isinstance(url_id, str) or \
+                (url_id is None and obj.url_identifier is False)
+
             # Verify we can acquire a target count as an integer
             assert isinstance(len(obj), int)
 

@@ -1018,6 +1018,17 @@ class NotifySlack(NotifyBase):
         # Return the response for processing
         return response
 
+    @property
+    def url_identifier(self):
+        """
+        Returns all of the identifiers that make this URL unique from
+        another simliar one. Targets or end points should never be identified
+        here.
+        """
+        return (
+            self.secure_protocol, self.token_a, self.token_b, self.token_c,
+        )
+
     def url(self, privacy=False, *args, **kwargs):
         """
         Returns the URL built dynamically based on specified arguments.

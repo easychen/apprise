@@ -345,6 +345,14 @@ class NotifyJoin(NotifyBase):
 
         return not has_error
 
+    def url_identifier(self):
+        """
+        Returns all of the identifiers that make this URL unique from
+        another simliar one. Targets or end points should never be identified
+        here.
+        """
+        return (self.secure_protocol, self.appikey)
+
     def url(self, privacy=False, *args, **kwargs):
         """
         Returns the URL built dynamically based on specified arguments.
